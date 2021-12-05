@@ -13,18 +13,11 @@ function listGifts(letter = []) {
   letter = letter
     .split(" ")
     .map((noBlank) => noBlank !== " " && noBlank)
-    .filter((elim) => !elim.startsWith("_"));
+    .filter((elim) => !elim.startsWith("_"))
+    .reduce();
   // .reduce((acc, item, index, arr) => {
   //   return item;
   // }, 0); //posible solucion
-
-  letter.forEach((element) => {
-    if (letter[element] !== 0) {
-      letter[element] = 0;
-    } else {
-      letter[element]++;
-    }
-  });
 
   return { letter };
 }
