@@ -7,19 +7,19 @@ Encima nos hemos dado cuenta que algunas palabras vienen
 Transforma el texto a un objeto que contenga el nombre de cada regalo y 
 las veces que aparece. Por ejemplo, si tenemos el texto:*/
 
-const carta = "bici coche balón _playstation bici coche peluche";
+const carta = "bici coche balón _playstation  bici     coche peluche";
 
 function listGifts(letter = []) {
   letter = letter
     .split(" ")
-    .map((noBlank) => noBlank !== " " && noBlank)
-    .filter((elim) => !elim.startsWith("_"))
-    .reduce();
-  // .reduce((acc, item, index, arr) => {
-  //   return item;
-  // }, 0); //posible solucion
+    .map((noBlank) => noBlank !== " " && noBlank.trim())
+    .filter((elim) => !elim.startsWith("_") && elim !== "")
+    .reduce((acc, regalo) => {
+      acc[regalo] ? (acc[regalo] += 1) : (acc[regalo] = 1);
+      return acc;
+    }, {});
 
-  return { letter };
+  return letter;
 }
 
 // console.log(carta.split(" "));
